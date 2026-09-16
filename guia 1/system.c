@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
-// gcc -g -Wall -Wextra olaya_sound_system.c -o programa
 
-void systemOlaya(const char *arg)
+
+void system(const char *arg)
 {
     int status;
     pid_t shellProgram = fork();
@@ -24,7 +24,7 @@ void systemOlaya(const char *arg)
 
 int main()
 {
-    systemOlaya("ls -l");
+    system("ls -l");
     
     return 0;
 }
