@@ -190,7 +190,7 @@ void main()
                 }
                 else
                 {
-                    char* name = "Hola soy home.. AY AY AY AY AY AY AY AY AAAAAAYYYYY";
+                    char* name = "Hola soy homero";
                     printf(name);
                 }
             }
@@ -217,12 +217,12 @@ int main()
     pid_t homero = fork();
     if (homero == 0)
     {
-        printf("Hola soy home...AY AY AY AY AY");
+        printf("Hola soy homero");
 
         pid_t lisa = fork();
         if (lisa == 0)
         {
-            printf("Hola soy Lisa la frigida");
+            printf("Hola soy Lisa");
             exit(EXIT_SUCCESS);
         }
         else if(lisa > 0) {wait_for_child(lisa);}
@@ -238,7 +238,7 @@ int main()
         pid_t maggie = fork();
         if (maggie == 0)
         {
-            printf("... agu ... a Nisman lo mataron");
+            printf("... agu ... el universo es muy confuso realmente");
             exit(EXIT_SUCCESS);
         }
         else if(maggie > 0){ wait_for_child(maggie);}
@@ -294,7 +294,7 @@ pid_t hijo;
 pid_t dad;
 int cur;
 
-void padre_soy_io()
+void padre_soy_yo()
 {
     while (1)
     {
@@ -323,7 +323,7 @@ int main()
     }
     else if (hijo > 0)
     {
-        padre_soi_io();
+        padre_soy_yo();
     }
     return;
 }
@@ -338,10 +338,10 @@ pid_t hijo;
 pid_t hije2;
 int cur;
 
-void padre_soy_io()
+void padre_soy_yo()
 {
-    bsend(hijo, hije2);
-    bsend(hije2, hijo);
+    bsend(hijo, hijo2);
+    bsend(hijo2, hijo);
 
     while (cur<50)
     {
@@ -349,25 +349,25 @@ void padre_soy_io()
         cur = breceive(hije2) + 1;
     }
     kill(hijo, SIGKILL);
-    kill(hije2, SIGKILL);
+    kill(hijo2, SIGKILL);
     exit(EXIT_SUCCESS);
 }
 
 void hijo()
 {
-    hermano_no_binarie = breceive(dad);
+    hermano2 = breceive(dad);
     while(1)
     {
-        bsend(hermano_no_binarie,breceive(dad)+1);
+        bsend(hermano2,breceive(dad)+1);
     }
 }
 
 void hije2()
 {
-    hermano_binarie = breceive(dad);
+    hermano1 = breceive(dad);
     while(1)
     {
-        bsend(dad,breceive(hermano_binarie)+1);
+        bsend(dad,breceive(hermano1)+1);
     }
 }
 
@@ -383,15 +383,15 @@ int main()
     }
     else if (hijo > 0)
     {
-        hije2 = fork();
+        hijo2 = fork();
 
-        if(hije2 == 0)
+        if(hijo2 == 0)
         {
-            hije2();
+            hijo2();
         }
-        else if (hije2 > 0)
+        else if (hijo2 > 0)
         {
-            padre_soi_io();
+            padre_soy_yo();
         }
         
     }
