@@ -150,39 +150,39 @@ Ejercicio 1
 
 *** Ejercicio 2 ***
 ---
-
-// Variables Globales
-int M,N; // Propios de la consigna, los asumo
-semaforo mutex = sem(1);
-semaforo barrera = sem(0);
-semaforo limiteSensores = sem(M);
-
-int resultadosListos = 0;
-
-void procesoCentral()
-{
-    while (1)
+    
+    // Variables Globales
+    int M,N; // Propios de la consigna, los asumo
+    semaforo mutex = sem(1);
+    semaforo barrera = sem(0);
+    semaforo limiteSensores = sem(M);
+    
+    int resultadosListos = 0;
+    
+    void procesoCentral()
     {
-        barrera.wait()
-        consolidarDataSensores();
+        while (1)
+        {
+            barrera.wait()
+            consolidarDataSensores();
+        }
     }
-}
-
-void procesoAsociadoASensor()
-{
-    while(1)
+    
+    void procesoAsociadoASensor()
     {
-        limiteSensores.wait();
-        preprocDataSensor();
-        limiteSensores.signal();
-
-        mutex.wait();
-        resultadosListos ++;
-        if (resultadosListos == N) barrera.signal(); 
-        mutex.signal();
+        while(1)
+        {
+            limiteSensores.wait();
+            preprocDataSensor();
+            limiteSensores.signal();
+    
+            mutex.wait();
+            resultadosListos ++;
+            if (resultadosListos == N) barrera.signal(); 
+            mutex.signal();
+        }
+    
     }
-
-}
 
 *** Ejercicio 3 ***
 ---
