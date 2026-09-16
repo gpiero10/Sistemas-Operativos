@@ -11,12 +11,12 @@ int main()
     pid_t homero = fork();
     if (homero == 0)
     {
-        printf("Hola soy home...AY AY AY AY AY\n");
+        printf("Hola soy home...\n");
 
         pid_t lisa = fork();
         if (lisa == 0)
         {
-            printf("Hola soy Lisa la frigida\n");
+            printf("Hola soy Lisa\n");
             exit(EXIT_SUCCESS);
         }
         else if(lisa > 0) {waitpid(lisa,&status,0);}
@@ -32,7 +32,7 @@ int main()
         pid_t maggie = fork();
         if (maggie == 0)
         {
-            printf("... agu ... a Nisman lo mataron\n");
+            printf("... agu ...\n");
             exit(EXIT_SUCCESS);
         }
         else if(maggie > 0){ waitpid(maggie,&status,0);}
